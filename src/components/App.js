@@ -16,7 +16,7 @@ export default function App() {
     const [desabilitaInput,setDesabilitaInput] = useState(true);
     const [erros,setErros] = useState(0);
     const [palavraEscolhida,setPalavraEscolhida] = useState([]);
-    const [palavrajogo,setPalavraJogo] = useState([]);
+    const [palavraJogo,setPalavraJogo] = useState([]);
     const [letrasUsadas,setLetrasUsadas] = useState(alfabeto);
 
     function iniciarJogo(){
@@ -39,7 +39,30 @@ export default function App() {
 
     function click(l){
         setLetrasUsadas([...letrasUsadas, l]);
-        
+        if(palavraEscolhida.includes(l)){
+            letraCorreta(l);
+        }else{
+            letraErrada(l);
+        }
+    }
+
+    function letraCorreta(l){
+        const novaPalavraJogo = [...palavraJogo];
+        palavraEscolhida.forEach((letra, i)=>{
+            if(palavraEscolhida[i]===l){
+                novaPalavraJogo[i]=letra+' ';
+            }
+        });
+        setPalavraJogo(novaPalavraJogo);
+
+        //ver se ganhou
+    }
+
+    function letraErrada(l){
+        const novosErros = erros+1;
+        setErros(novosErros);
+
+        //ver se perdeu
     }
 
     return (
@@ -47,7 +70,7 @@ export default function App() {
             <div className="container-forca">
                 <img src={imagens[erros]} alt="imagem da forca"/>
                 <button onClick={iniciarJogo}>Escolher palavra</button>
-                <h1>{palavrajogo}</h1>
+                <h1>{palavraJogo}</h1>
             </div>
             <div className="container-letras">
                 {alfabeto.map((letra)=> 
