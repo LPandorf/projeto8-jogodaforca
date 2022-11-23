@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import styled from "styled-components";
 import palavras from "../Palavras";
 import Chute from "./Chute";
 import Jogo from "./Jogo";
@@ -94,10 +95,19 @@ export default function App() {
     }
 
     return (
-        <div className="conteiner-tela">
+        <div className="container-tela">
             <Jogo imagens={imagens} erros={erros} iniciarJogo={iniciarJogo} cor={cor} palavraJogo={palavraJogo} />
-            <Letras alfabeto={alfabeto} letrasUsadas={letrasUsadas} chick={click} />
+            <Letras alfabeto={alfabeto} letrasUsadas={letrasUsadas} click={click} />
             <Chute desabilitaInput={desabilitaInput} chute={chute} setChute={setChute} chutar={chutar}/>
         </div>
     );
 }
+/*
+const Tela=styled.div`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`*/
