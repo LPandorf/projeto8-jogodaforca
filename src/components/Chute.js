@@ -5,8 +5,8 @@ export default function Chute(props) {
     return (
         <Chutometro>
             <Span>Já sei a palavra!</Span>
-            <Input disabled={desabilitaInput} value={chute} onChange={(e) => setChute(e.target.value)} />
-            <BotaoChutar onClick={chutar}>Chutar</BotaoChutar>
+            <Input data-test="guess-input" disabled={desabilitaInput} value={chute} onChange={(e) => setChute(e.target.value)} />
+            <BotaoChutar data-test="guess-button" onClick={chutar}>Chutar</BotaoChutar>
         </Chutometro>
     );
 }

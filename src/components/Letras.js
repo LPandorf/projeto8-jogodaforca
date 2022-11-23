@@ -6,6 +6,7 @@ export default function Letras(props){
         <Teclado>
             {alfabeto.map((letra) => (
                 <BotãoLetras
+                    data-test="letter"
                     onClick={() => click(letra)}
                     key={letra}
                     disabled={letrasUsadas.includes(letra)}
