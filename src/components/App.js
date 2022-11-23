@@ -1,5 +1,8 @@
 import React, {useState} from "react";
 import palavras from "../Palavras";
+import Chute from "./Chute";
+import Jogo from "./Jogo";
+import Letras from "./Letras";
 import forca0 from "/home/leticia/projeto8-jogodaforca/src/assets/forca0.png";
 import forca1 from "/home/leticia/projeto8-jogodaforca/src/assets/forca1.png";
 import forca2 from "/home/leticia/projeto8-jogodaforca/src/assets/forca2.png";
@@ -92,23 +95,9 @@ export default function App() {
 
     return (
         <div className="conteiner-tela">
-            <div className="container-forca">
-                <img src={imagens[erros]} alt="imagem da forca"/>
-                <button onClick={iniciarJogo}>Escolher palavra</button>
-                <h1 className={cor}>{palavraJogo}</h1>
-            </div>
-            <div className="container-letras">
-                {alfabeto.map((letra)=> 
-                    <button onClick={()=>click(letra)} key={letra} disabled={letrasUsadas.includes(letra)} >{letra}</button>
-                    
-                )}
-            </div>
-            <div className="container-input">
-                <span>Já sei a palavra!</span>
-                <input disabled={desabilitaInput} value={chute} onChange={(e)=>setChute(e.target.value)}/>
-                <button onClick={chutar}>Chutar</button>
-            </div>
-
+            <Jogo imagens={imagens} erros={erros} iniciarJogo={iniciarJogo} cor={cor} palavraJogo={palavraJogo} />
+            <Letras alfabeto={alfabeto} letrasUsadas={letrasUsadas} chick={click} />
+            <Chute desabilitaInput={desabilitaInput} chute={chute} setChute={setChute} chutar={chutar}/>
         </div>
     );
 }
