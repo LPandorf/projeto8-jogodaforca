@@ -1,4 +1,3 @@
-
 import React, {useState} from "react";
 import palavras from "../Palavras";
 import forca0 from "/home/leticia/projeto8-jogodaforca/src/assets/forca0.png";
@@ -18,11 +17,15 @@ export default function App() {
     const [palavraEscolhida,setPalavraEscolhida] = useState([]);
     const [palavraJogo,setPalavraJogo] = useState([]);
     const [letrasUsadas,setLetrasUsadas] = useState(alfabeto);
+    const [chute,setChute] = useState();
+    const [cor,setCor] = useState("preto");
 
     function iniciarJogo(){
         setDesabilitaInput(false);
         setLetrasUsadas([]);
         sortearPalavra();
+        setCor("preto");
+        setErros(0);
     }
 
     function sortearPalavra(){
@@ -30,8 +33,7 @@ export default function App() {
         const palavra = palavras[p];
         const arrPalavra = palavra.split("");
         setPalavraEscolhida(arrPalavra);
-        console.log(palavra);
-
+        //console.log(palavra);
         let tracos = [];
         arrPalavra.forEach((letra)=> tracos.push(" _"));
         setPalavraJogo(tracos);
@@ -54,15 +56,38 @@ export default function App() {
             }
         });
         setPalavraJogo(novaPalavraJogo);
-
-        //ver se ganhou
+        if(!novaPalavraJogo.includes(" _")){
+            setCor("verde");
+            finalizarJogo();
+        }
     }
 
     function letraErrada(l){
         const novosErros = erros+1;
         setErros(novosErros);
+        if(erros+1===6){
+            setCor("vermelho")
+            finalizarJogo();
+        }
+    }
 
-        //ver se perdeu
+    function chutar(){
+        let strPalavra=palavraEscolhida.join("");
+        if(chute===strPalavra){
+            setCor("verde");
+        }else{
+            setErros(6);
+            setCor("vermelho");
+        }
+        finalizarJogo();
+    }
+
+    function finalizarJogo(){
+        setLetrasUsadas(alfabeto);
+        setDesabilitaInput(true);
+        setChute("");
+        setPalavraJogo(palavraEscolhida);
+
     }
 
     return (
@@ -70,7 +95,7 @@ export default function App() {
             <div className="container-forca">
                 <img src={imagens[erros]} alt="imagem da forca"/>
                 <button onClick={iniciarJogo}>Escolher palavra</button>
-                <h1>{palavraJogo}</h1>
+                <h1 className={cor}>{palavraJogo}</h1>
             </div>
             <div className="container-letras">
                 {alfabeto.map((letra)=> 
@@ -80,8 +105,8 @@ export default function App() {
             </div>
             <div className="container-input">
                 <span>Já sei a palavra!</span>
-                <input disabled={desabilitaInput}/>
-                <button>Chutar</button>
+                <input disabled={desabilitaInput} value={chute} onChange={(e)=>setChute(e.target.value)}/>
+                <button onClick={chutar}>Chutar</button>
             </div>
 
         </div>
