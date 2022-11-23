@@ -1,17 +1,17 @@
-//import styled from "styled-components";
+import styled from "styled-components";
 
 export default function Jogo(props){
     const {imagens, erros, cor, palavraJogo, iniciarJogo}= props;
     
     return(
-        <div className="container-forca">
-            <img src={imagens[erros]} alt="imagem da forca"/>
-            <button onClick={iniciarJogo}>Escolher palavra</button>
-            <h1 className={cor}>{palavraJogo}</h1>
-        </div>
+        <Corpo>
+            <Forca src={imagens[erros]} alt="imagem da forca"/>
+            <BotaoEscolher onClick={iniciarJogo}>Escolher palavra</BotaoEscolher>
+            <Palavra className={cor}>{palavraJogo}</Palavra>
+        </Corpo>
     );
 }
-/*
+
 const Corpo=styled.div`
     display: flex;
     align-items: flex-end;
@@ -44,4 +44,4 @@ const Palavra=styled.h1`
     font-size: 40px;
     margin-right: 5px;
     font-family: "Segoe UI";
-`*/
+`

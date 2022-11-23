@@ -1,16 +1,16 @@
-//import styled from "styled-components";
+import styled from "styled-components";
 
 export default function Chute(props) {
     const {desabilitaInput, chute, setChute, chutar}= props;
     return (
-        <div className="container-input">
-            <span>Já sei a palavra!</span>
-            <input disabled={desabilitaInput} value={chute} onChange={(e) => setChute(e.target.value)} />
-            <button onClick={chutar}>Chutar</button>
-        </div>
+        <Chutometro>
+            <Span>Já sei a palavra!</Span>
+            <Input disabled={desabilitaInput} value={chute} onChange={(e) => setChute(e.target.value)} />
+            <BotaoChutar onClick={chutar}>Chutar</BotaoChutar>
+        </Chutometro>
     );
 }
-/*
+
 const Chutometro=styled.div`
     display: flex;
     align-items: center;
@@ -19,7 +19,7 @@ const Chutometro=styled.div`
     width: 630px;
     margin-left: 50px;
 `
-const Botao=styled.button`
+const BotaoChutar=styled.button`
     background-color: #e1ecf4;
     border-radius: 5px;
     border: 1px solid #7aa7c7;
@@ -49,4 +49,4 @@ const Span=styled.span`
     font-family: "Segoe UI";
     font-size: 18px;
     margin-right: 10px;
-`*/
+`

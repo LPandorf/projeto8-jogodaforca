@@ -1,22 +1,22 @@
-//import styled from "styled-components";
+import styled from "styled-components";
 
 export default function Letras(props){
     const {alfabeto, letrasUsadas, click}= props;
     return (
-        <div className="container-letras">
+        <Teclado>
             {alfabeto.map((letra) => (
-                <button
+                <BotãoLetras
                     onClick={() => click(letra)}
                     key={letra}
                     disabled={letrasUsadas.includes(letra)}
                 >
                     {letra}
-                </button>
+                </BotãoLetras>
             ))}
-        </div>
+        </Teclado>
     );
 }
-/*
+
 const Teclado = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -47,4 +47,3 @@ const BotãoLetras=styled.button`
         cursor: default;
     }
 `
-*/

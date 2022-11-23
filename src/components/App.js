@@ -95,14 +95,14 @@ export default function App() {
     }
 
     return (
-        <div className="container-tela">
+        <Tela>
             <Jogo imagens={imagens} erros={erros} iniciarJogo={iniciarJogo} cor={cor} palavraJogo={palavraJogo} />
             <Letras alfabeto={alfabeto} letrasUsadas={letrasUsadas} click={click} />
             <Chute desabilitaInput={desabilitaInput} chute={chute} setChute={setChute} chutar={chutar}/>
-        </div>
+        </Tela>
     );
 }
-/*
+
 const Tela=styled.div`
     width: 100vw;
     height: 100vh;
@@ -110,4 +110,4 @@ const Tela=styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-`*/
+`
