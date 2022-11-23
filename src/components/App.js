@@ -22,7 +22,7 @@ export default function App() {
     const [palavraJogo,setPalavraJogo] = useState([]);
     const [letrasUsadas,setLetrasUsadas] = useState(alfabeto);
     const [chute,setChute] = useState();
-    const [cor,setCor] = useState("preto");
+    const [cor,setCor] = useState("black");
 
     function iniciarJogo(){
         setDesabilitaInput(false);
@@ -61,7 +61,7 @@ export default function App() {
         });
         setPalavraJogo(novaPalavraJogo);
         if(!novaPalavraJogo.includes(" _")){
-            setCor("verde");
+            setCor("green");
             finalizarJogo();
         }
     }
@@ -70,7 +70,7 @@ export default function App() {
         const novosErros = erros+1;
         setErros(novosErros);
         if(erros+1===6){
-            setCor("vermelho")
+            setCor("red")
             finalizarJogo();
         }
     }

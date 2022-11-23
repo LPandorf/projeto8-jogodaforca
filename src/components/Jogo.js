@@ -7,7 +7,7 @@ export default function Jogo(props){
         <Corpo>
             <Forca data-test="game-image" src={imagens[erros]} alt="imagem da forca"/>
             <BotaoEscolher data-test="choose-word" onClick={iniciarJogo}>Escolher palavra</BotaoEscolher>
-            <Palavra data-test="word"  data-answer={palavraJogo} className={cor}>{palavraJogo}</Palavra>
+            <Palavra data-test="word"  data-answer={palavraJogo} cor={cor}>{palavraJogo}</Palavra>
         </Corpo>
     );
 }
@@ -44,4 +44,6 @@ const Palavra=styled.h1`
     font-size: 40px;
     margin-right: 5px;
     font-family: "Segoe UI";
+    color: ${(props)=>props.cor};
 `
+
