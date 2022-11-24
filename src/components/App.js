@@ -80,10 +80,10 @@ export default function App() {
     function chutar(){
         let strPalavra=palavraEscolhida.join("");
         if(chute===strPalavra){
-            setCor("verde");
+            setCor("green");
         }else{
             setErros(6);
-            setCor("vermelho");
+            setCor("red");
         }
         finalizarJogo();
     }
