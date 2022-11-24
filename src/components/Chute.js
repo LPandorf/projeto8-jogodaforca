@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export default function Chute(props) {
-    const {desabilitaInput, chute, setChute, chutar}= props;
+    const {desabilitaInput, chute, setChute, chutar, desabilitaBotao}= props;
     return (
         <Chutometro>
             <Span>Já sei a palavra!</Span>
             <Input data-test="guess-input" disabled={desabilitaInput} value={chute} onChange={(e) => setChute(e.target.value)} />
-            <BotaoChutar data-test="guess-button" onClick={chutar}>Chutar</BotaoChutar>
+            <BotaoChutar data-test="guess-button" onClick={chutar} disabled={desabilitaBotao} >Chutar</BotaoChutar>
         </Chutometro>
     );
 }
@@ -34,6 +34,12 @@ const BotaoChutar=styled.button`
         background-color: #b3d3ea;
         color: #2c5777;
         cursor: pointer;
+    }
+    :disabled{
+        background-color: #9faab5;
+        border: 1px solid #9faab5;
+        color: #79818a;
+        cursor: default;
     }
 `
 const Input=styled.input`

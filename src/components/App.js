@@ -23,6 +23,7 @@ export default function App() {
     const [letrasUsadas,setLetrasUsadas] = useState(alfabeto);
     const [chute,setChute] = useState();
     const [cor,setCor] = useState("black");
+    const [desabilitaBotao,setDesabilitaBotao] = useState(true);
 
     function iniciarJogo(){
         setDesabilitaInput(false);
@@ -30,6 +31,7 @@ export default function App() {
         sortearPalavra();
         setCor("preto");
         setErros(0);
+        setDesabilitaBotao(false);
     }
 
     function sortearPalavra(){
@@ -56,7 +58,7 @@ export default function App() {
         const novaPalavraJogo = [...palavraJogo];
         palavraEscolhida.forEach((letra, i)=>{
             if(palavraEscolhida[i]===l){
-                novaPalavraJogo[i]=letra+' ';
+                novaPalavraJogo[i]=letra;
             }
         });
         setPalavraJogo(novaPalavraJogo);
@@ -91,6 +93,7 @@ export default function App() {
         setDesabilitaInput(true);
         setChute("");
         setPalavraJogo(palavraEscolhida);
+        setDesabilitaBotao(true);
 
     }
 
@@ -98,7 +101,7 @@ export default function App() {
         <Tela>
             <Jogo imagens={imagens} erros={erros} iniciarJogo={iniciarJogo} cor={cor} palavraJogo={palavraJogo} />
             <Letras alfabeto={alfabeto} letrasUsadas={letrasUsadas} click={click} />
-            <Chute desabilitaInput={desabilitaInput} chute={chute} setChute={setChute} chutar={chutar}/>
+            <Chute desabilitaBotao={desabilitaBotao} desabilitaInput={desabilitaInput} chute={chute} setChute={setChute} chutar={chutar}/>
         </Tela>
     );
 }
