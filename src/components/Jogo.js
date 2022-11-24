@@ -7,11 +7,11 @@ export default function Jogo(props){
         <Corpo>
             <Forca data-test="game-image" src={imagens[erros]} alt="imagem da forca"/>
             <BotaoEscolher data-test="choose-word" onClick={iniciarJogo}>Escolher palavra</BotaoEscolher>
-            <Palavra data-test="word"  data-answer={palavraJogo} cor={cor}>{palavraJogo}</Palavra>
+            <Palavra data-test="word"  data-answer cor={cor}>{palavraJogo}</Palavra>
         </Corpo>
     );
 }
-
+//={palavraJogo}
 const Corpo=styled.div`
     display: flex;
     align-items: flex-end;
