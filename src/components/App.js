@@ -39,11 +39,9 @@ export default function App() {
     function sortearPalavra(){
         const p = Math.floor(Math.random() * palavras.length)
         const palavra = palavras[p];
-        //const palavra = "áùçíõâ";
         const arrPalavra = palavra.split("");
         setPalavraDaRodada(palavra);
         setPalavraEscolhida(arrPalavra);
-        console.log(palavra);
         let tracos = [];
         arrPalavra.forEach((letra)=> tracos.push(" _"));
         setPalavraJogo(tracos);

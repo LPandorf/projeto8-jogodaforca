@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export default function Jogo(props){
     const {imagens, erros, cor, palavraJogo, iniciarJogo, palavraDaRodada}= props;
-    console.log(palavraDaRodada);
     return(
         <Corpo>
             <Forca data-test="game-image" src={imagens[erros]} alt="imagem da forca"/>
