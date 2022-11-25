@@ -99,7 +99,7 @@ export default function App() {
 
     return (
         <Tela>
-            <Jogo imagens={imagens} erros={erros} iniciarJogo={iniciarJogo} cor={cor} palavraJogo={palavraJogo} />
+            <Jogo imagens={imagens} erros={erros} iniciarJogo={iniciarJogo} cor={cor} palavraJogo={palavraJogo} palavraEscolhida={palavraEscolhida}/>
             <Letras alfabeto={alfabeto} letrasUsadas={letrasUsadas} click={click} />
             <Chute desabilitaBotao={desabilitaBotao} desabilitaInput={desabilitaInput} chute={chute} setChute={setChute} chutar={chutar}/>
         </Tela>

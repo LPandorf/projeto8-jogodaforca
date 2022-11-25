@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export default function Jogo(props){
-    const {imagens, erros, cor, palavraJogo, iniciarJogo}= props;
+    const {imagens, erros, cor, palavraJogo, iniciarJogo, palavraEscolhida}= props;
     
     return(
         <Corpo>
             <Forca data-test="game-image" src={imagens[erros]} alt="imagem da forca"/>
             <BotaoEscolher data-test="choose-word" onClick={iniciarJogo}>Escolher palavra</BotaoEscolher>
-            <Palavra data-test="word"  data-answer cor={cor}>{palavraJogo}</Palavra>
+            <Palavra data-test="word"  data-answer={palavraEscolhida} cor={cor}>{palavraJogo}</Palavra>
         </Corpo>
     );
 }
