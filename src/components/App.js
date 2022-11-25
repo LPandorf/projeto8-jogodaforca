@@ -25,6 +25,7 @@ export default function App() {
     const [chute,setChute] = useState();
     const [cor,setCor] = useState("black");
     const [desabilitaBotao,setDesabilitaBotao] = useState(true);
+    const [palavraSemCaracEspecial,setPalavraSemCaracEspecial] = useState("");
 
     function iniciarJogo(){
         setDesabilitaInput(false);
@@ -38,6 +39,7 @@ export default function App() {
     function sortearPalavra(){
         const p = Math.floor(Math.random() * palavras.length)
         const palavra = palavras[p];
+        //const palavra = "áùçíõâ";
         const arrPalavra = palavra.split("");
         setPalavraDaRodada(palavra);
         setPalavraEscolhida(arrPalavra);
@@ -45,11 +47,13 @@ export default function App() {
         let tracos = [];
         arrPalavra.forEach((letra)=> tracos.push(" _"));
         setPalavraJogo(tracos);
+        const palavraNormalizada=palavra.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+        setPalavraSemCaracEspecial(palavraNormalizada);
     }
 
     function click(l){
         setLetrasUsadas([...letrasUsadas, l]);
-        if(palavraEscolhida.includes(l)){
+        if(palavraSemCaracEspecial.includes(l)){
             letraCorreta(l);
         }else{
             letraErrada(l);
@@ -59,7 +63,7 @@ export default function App() {
     function letraCorreta(l){
         const novaPalavraJogo = [...palavraJogo];
         palavraEscolhida.forEach((letra, i)=>{
-            if(palavraEscolhida[i]===l){
+            if(palavraSemCaracEspecial[i]===l){
                 novaPalavraJogo[i]=letra;
             }
         });
@@ -81,7 +85,7 @@ export default function App() {
 
     function chutar(){
         let strPalavra=palavraEscolhida.join("");
-        if(chute===strPalavra){
+        if(chute===strPalavra || chute===palavraSemCaracEspecial){
             setCor("green");
         }else{
             setErros(6);
@@ -115,4 +119,5 @@ const Tela=styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: white;
 `
