@@ -26,12 +26,12 @@ export default function App() {
     const [cor,setCor] = useState("black");
     const [desabilitaBotao,setDesabilitaBotao] = useState(true);
     const [palavraSemCaracEspecial,setPalavraSemCaracEspecial] = useState("");
-
+    
     function iniciarJogo(){
         setDesabilitaInput(false);
         setLetrasUsadas([]);
         sortearPalavra();
-        setCor("preto");
+        setCor("black");
         setErros(0);
         setDesabilitaBotao(false);
     }
