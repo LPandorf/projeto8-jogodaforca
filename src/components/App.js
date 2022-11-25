@@ -19,6 +19,7 @@ export default function App() {
     const [desabilitaInput,setDesabilitaInput] = useState(true);
     const [erros,setErros] = useState(0);
     const [palavraEscolhida,setPalavraEscolhida] = useState([]);
+    const [palavraDaRodada,setPalavraDaRodada] = useState([]);
     const [palavraJogo,setPalavraJogo] = useState([]);
     const [letrasUsadas,setLetrasUsadas] = useState(alfabeto);
     const [chute,setChute] = useState();
@@ -38,8 +39,9 @@ export default function App() {
         const p = Math.floor(Math.random() * palavras.length)
         const palavra = palavras[p];
         const arrPalavra = palavra.split("");
+        setPalavraDaRodada(palavra);
         setPalavraEscolhida(arrPalavra);
-        //console.log(palavra);
+        console.log(palavra);
         let tracos = [];
         arrPalavra.forEach((letra)=> tracos.push(" _"));
         setPalavraJogo(tracos);
@@ -99,7 +101,7 @@ export default function App() {
 
     return (
         <Tela>
-            <Jogo imagens={imagens} erros={erros} iniciarJogo={iniciarJogo} cor={cor} palavraJogo={palavraJogo} palavraEscolhida={palavraEscolhida}/>
+            <Jogo imagens={imagens} erros={erros} iniciarJogo={iniciarJogo} cor={cor} palavraJogo={palavraJogo} palavraDaRodada={palavraDaRodada}/>
             <Letras alfabeto={alfabeto} letrasUsadas={letrasUsadas} click={click} />
             <Chute desabilitaBotao={desabilitaBotao} desabilitaInput={desabilitaInput} chute={chute} setChute={setChute} chutar={chutar}/>
         </Tela>
